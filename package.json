@@ -1,0 +1,24 @@
+{
+  "name": "small-world",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SMALL WORLD website with a private parent blog and secure administration",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "dev": "node --env-file-if-exists=.env --watch src/server.js",
+    "admin": "node --env-file-if-exists=.env scripts/create-admin.js",
+    "test": "node --test --test-concurrency=1",
+    "check": "node --check src/server.js && node --check src/views.js && node --check public/admin.js && node --check public/site.js",
+    "backup": "node --env-file-if-exists=.env scripts/backup.js",
+    "import:posts": "node --env-file-if-exists=.env scripts/import-posts.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "multer": "^2.4.0",
+    "sanitize-html": "^2.17.7"
+  }
+}

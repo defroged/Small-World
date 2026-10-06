@@ -1,0 +1,15 @@
+services:
+  website:
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:3000}
+      NODE_ENV: ${NODE_ENV:-development}
+      TRUST_PROXY: ${TRUST_PROXY:-0}
+    volumes:
+      - smallworld-data:/app/data
+      - ./backups:/app/backups
+    restart: unless-stopped
+volumes:
+  smallworld-data:
